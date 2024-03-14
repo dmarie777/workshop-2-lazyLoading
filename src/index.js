@@ -1,7 +1,4 @@
-/**
- * This file is just a silly example to show everything working in the browser.
- * When you're ready to start on your site, clear the file. Happy hacking!
- **/
+import { registerImage } from "./lazy";
 
 console.log('Happy hacking :)')
 const images = document.querySelector('.images');
@@ -13,6 +10,7 @@ button.addEventListener('click', addFox)
 function addFox() {
     const newImg = createImg()
     images.appendChild(newImg);
+    registerImage(newImg)
 }
 
 //create an img node 
@@ -23,7 +21,7 @@ function createImg() {
     const container = document.createElement('div')
     container.className = 'container'
     const img = document.createElement('img');
-    img.src = `https://randomfox.ca/images/${random}.jpg`;
+    img.dataset.src = `https://randomfox.ca/images/${random}.jpg`;
     container.appendChild(img)
     return container
 }
